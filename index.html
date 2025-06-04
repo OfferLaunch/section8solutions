@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 8 Solutions - Turnkey Section 8 Investment Properties</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/16x16.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        :root {
+            --brand-navy: #112747;
+            --brand-blue: #2F6AC3;
+            --brand-light-blue: #7399D3;
+            --brand-black: #000000;
+            --brand-white: #FFFFFF;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .brand-navy { color: var(--brand-navy); }
+        .brand-blue { color: var(--brand-blue); }
+        .brand-light-blue { color: var(--brand-light-blue); }
+        .bg-brand-navy { background-color: var(--brand-navy); }
+        .bg-brand-blue { background-color: var(--brand-blue); }
+        .bg-brand-light-blue { background-color: var(--brand-light-blue); }
+        .border-brand-blue { border-color: var(--brand-blue); }
+        .bg-light-blue { background-color: rgba(47, 106, 195, 0.05); }
+
+        /* Navigation active state */
+        .nav-link {
+            position: relative;
+            color: var(--brand-navy);
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--brand-blue);
+        }
+
+        .nav-link.active {
+            color: var(--brand-navy);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--brand-navy);
+            animation: underline 0.3s ease-out forwards;
+        }
+
+        @keyframes underline {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        /* Custom shadow styles */
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(17, 39, 71, 0.1),
+                        0 2px 4px -1px rgba(17, 39, 71, 0.06),
+                        0 0 0 1px rgba(17, 39, 71, 0.1);
+            transition: all 0.3s ease;
+        }
+        .card-shadow:hover {
+            box-shadow: 0 10px 15px -3px rgba(17, 39, 71, 0.1),
+                        0 4px 6px -2px rgba(17, 39, 71, 0.05),
+                        0 0 0 1px rgba(17, 39, 71, 0.1);
+            transform: translateY(-2px);
+        }
+        .section-shadow {
+            box-shadow: 0 4px 6px -1px rgba(17, 39, 71, 0.1),
+                        0 2px 4px -1px rgba(17, 39, 71, 0.06);
+        }
+
+        /* Ensure sections are visible by default */
+        section {
+            opacity: 1 !important;
+            transform: none !important;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .fade-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        /* Floating navigation styles */
+        .floating-nav {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 2rem);
+            max-width: 1200px;
+            z-index: 50;
+            transition: all 0.3s ease;
+        }
+        .floating-nav.scrolled {
+            top: 0.5rem;
+        }
+        .nav-container {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nav = document.querySelector('.floating-nav');
+            let lastScroll = 0;
+
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+                
+                lastScroll = currentScroll;
+            });
+        });
+    </script>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="floating-nav">
+        <div class="nav-container">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <div class="flex-shrink-0">
+                        <img src="assets/logos/blue logo.png" alt="Section 8 Solutions Logo" class="h-8">
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-center space-x-8">
+                            <a href="#" class="nav-link text-gray-700 hover:text-brand-blue px-3 py-2 font-medium" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Home</a>
+                            <a href="#how-it-works" class="nav-link text-gray-700 hover:text-brand-blue px-3 py-2 font-medium">How It Works</a>
+                            <a href="#testimonials" class="nav-link text-gray-700 hover:text-brand-blue px-3 py-2 font-medium">Success Stories</a>
+                            <a href="#faq" class="nav-link text-gray-700 hover:text-brand-blue px-3 py-2 font-medium">FAQ</a>
+                            <a href="#" class="bg-brand-blue text-white px-6 py-2 rounded-lg hover:bg-brand-light-blue transition-colors font-medium">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 bg-brand-navy" style="min-height: 70vh; display: flex; align-items: center;">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center h-full">
+                <div class="flex flex-col items-center justify-center text-center h-full w-full">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+                        Section 8 Housing
+                        <br>
+                        Investment Properties
+                        <br>
+                        <span class="text-brand-blue">Managed for You</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8 max-w-xl mx-auto">
+                        We help investors navigate Section 8 property investments by handling property selection, HUD approval, tenant screening, and property management coordination. All investments carry risk and require due diligence.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center w-full">
+                        <a href="#" class="bg-brand-blue text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-brand-light-blue transition-colors">
+                            Book a Call
+                        </a>
+                    </div>
+                </div>
+                <div class="relative rounded-2xl overflow-hidden shadow-xl bg-brand-navy h-full w-full flex items-center justify-center">
+                    <div class="aspect-video w-full">
+                        <div id="vidalytics_embed_f3NAGFgRzvGUFDt0" style="width: 100%; height: 100%; position: relative;"></div>
+                        <script type="text/javascript">
+                        (function (v, i, d, a, l, y, t, c, s) {
+                            y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
+                            if (!vsl){vsl=function(u,cb){
+                                if(t){cb();return;}s=i.createElement("script");s.type="text/javascript";s.async=1;s.src=u;
+                                if(s.readyState){s.onreadystatechange=function(){if(s.readyState==="loaded"||s.readyState=="complete"){s.onreadystatechange=null;vlf=1;cb();}};}else{s.onload=function(){vlf=1;cb();};}
+                                i.getElementsByTagName("head")[0].appendChild(s);
+                            };}
+                            vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
+                        })(window, document, 'Vidalytics', 'vidalytics_embed_f3NAGFgRzvGUFDt0', 'https://fast.vidalytics.com/embeds/CgmkJczI/f3NAGFgRzvGUFDt0/');
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Section 8 Investing Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-brand-navy">What is Section 8 Investing?</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="aspect-video">
+                    <div id="vidalytics_embed_SECTION8_EXPLANATION_ID" style="width: 100%; position:relative; padding-top: 56.25%;"></div>
+                </div>
+                <div class="space-y-6">
+                    <p class="text-lg text-gray-700">Section 8 is a federal housing assistance program that helps low-income families afford decent, safe, and sanitary housing. As an investor, you can participate in this program by providing housing to qualified tenants.</p>
+                    <p class="text-lg text-gray-700">The program offers several benefits for property owners, including:</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>Government-subsidized rental payments</li>
+                        <li>Regular property inspections to maintain standards</li>
+                        <li>Support for property maintenance requirements</li>
+                        <li>Assistance with tenant screening and placement</li>
+                    </ul>
+                    <p class="text-lg text-gray-700">While Section 8 investing can provide stable rental income, it's important to understand that all investments carry risk and require proper due diligence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-brand-navy">How It Works</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-white border-2 border-brand-blue rounded-xl p-8 flex flex-col items-start shadow-md transition-shadow duration-300 hover:shadow-2xl hover:shadow-[rgba(17,39,71,0.25)]">
+                    <div class="text-2xl font-bold mb-4 text-brand-blue">Step 1</div>
+                    <h3 class="text-xl font-semibold mb-3 text-brand-navy">Property Selection</h3>
+                    <p class="text-gray-700">We find and vet turnkey properties that are suitable for Section 8 housing, ensuring they meet all HUD requirements.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="bg-light-blue border-2 border-brand-blue rounded-xl p-8 flex flex-col items-start shadow-md transition-shadow duration-300 hover:shadow-2xl hover:shadow-[rgba(17,39,71,0.25)]">
+                    <div class="text-2xl font-bold mb-4 text-brand-blue">Step 2</div>
+                    <h3 class="text-xl font-semibold mb-3 text-brand-navy">HUD Approval</h3>
+                    <p class="text-gray-700">We handle the entire HUD approval process, ensuring your property meets all Section 8 requirements and regulations.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="bg-white border-2 border-brand-blue rounded-xl p-8 flex flex-col items-start shadow-md transition-shadow duration-300 hover:shadow-2xl hover:shadow-[rgba(17,39,71,0.25)]">
+                    <div class="text-2xl font-bold mb-4 text-brand-blue">Step 3</div>
+                    <h3 class="text-xl font-semibold mb-3 text-brand-navy">Tenant Placement</h3>
+                    <p class="text-gray-700">We screen and place qualified Section 8 tenants, handling all the paperwork and ensuring a smooth transition.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="bg-light-blue border-2 border-brand-blue rounded-xl p-8 flex flex-col items-start shadow-md transition-shadow duration-300 hover:shadow-2xl hover:shadow-[rgba(17,39,71,0.25)]">
+                    <div class="text-2xl font-bold mb-4 text-brand-blue">Step 4</div>
+                    <h3 class="text-xl font-semibold mb-3 text-brand-navy">Property Management</h3>
+                    <p class="text-gray-700">We coordinate with professional property management services to handle day-to-day operations, maintenance, and tenant relations. While this reduces your direct involvement, all investments carry risk and require oversight.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-brand-navy">Success Stories</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-8 rounded-xl card-shadow">
+                    <div class="aspect-video mb-4">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/8VqvG5xBnC8" title="Juan's Section 8 Success Story" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="mb-4">
+                        <div>
+                            <h4 class="font-semibold text-brand-navy">Juan</h4>
+                            <p class="text-gray-600">Former Corporate Executive</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"As a former corporate executive, I was looking for a hands-off investment that would provide consistent returns. Section 8 Solutions delivered exactly what I needed."</p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-8 rounded-xl card-shadow">
+                    <div class="aspect-video mb-4">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/nQ4Mc1W81wI" title="Chad's Section 8 Success Story" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="mb-4">
+                        <div>
+                            <h4 class="font-semibold text-brand-navy">Chad</h4>
+                            <p class="text-gray-600">Mental Health Nurse</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"As a nurse with a busy schedule, I needed an investment that wouldn't require my constant attention. Section 8 Solutions has been the perfect solution for passive income."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-brand-navy">Frequently Asked Questions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- FAQ Video 1 -->
+                <div class="bg-white rounded-xl overflow-hidden card-shadow">
+                    <div class="aspect-video">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ERE_zObP3UA" title="How Much Does a Section 8 Property Cost?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-brand-navy">How Much Does a Section 8 Property Cost?</h3>
+                        <p class="text-gray-600">Learn about the investment requirements and costs associated with Section 8 properties.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Video 2 -->
+                <div class="bg-white rounded-xl overflow-hidden card-shadow">
+                    <div class="aspect-video">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/AvrQ3-PXQXA" title="How We Find Profitable Section 8 Properties" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-brand-navy">How We Find Profitable Section 8 Properties</h3>
+                        <p class="text-gray-600">Discover our process for identifying and evaluating profitable Section 8 investment opportunities.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Video 3 -->
+                <div class="bg-white rounded-xl overflow-hidden card-shadow">
+                    <div class="aspect-video">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/NQrh54W3Yp4" title="How We Ensure High Quality Tenants" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-brand-navy">How We Ensure High Quality Tenants</h3>
+                        <p class="text-gray-600">Learn about our comprehensive tenant screening process and quality assurance measures.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Started Section -->
+    <section class="py-20 bg-brand-blue">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-8 text-white">Ready to Start Your Section 8 Investment Journey?</h2>
+            <a href="#" class="inline-block bg-white text-brand-blue px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors">
+                Book Your Free Consultation
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-navy text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <img src="assets/logos/white logo.png" alt="Section 8 Solutions Logo" class="h-8 mb-4">
+                    <p class="text-gray-400">Making Section 8 property investment simple and profitable.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#how-it-works" class="text-gray-400 hover:text-white">How It Works</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white">Success Stories</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">Email: team@section8solutions.co</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/section8solutions.co/?hl=en" target="_blank" rel="noopener" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61571370211766" target="_blank" rel="noopener" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <div class="mb-2">
+                    <a href="privacy-policy.html" class="text-gray-400 hover:text-white">Privacy Policy</a>
+                    <span class="mx-2">|</span>
+                    <a href="terms-of-service" target="_blank" rel="noopener" class="text-gray-400 hover:text-white">Terms of Service</a>
+                </div>
+                <p>&copy; 2024 Section 8 Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
